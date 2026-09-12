@@ -52,9 +52,9 @@ def prospectar_leads(key, proj_name, country_val, ind_val):
     ]
     """
     
-    # Se utiliza el modelo gemini-2.5-flash requerido por tu cuenta
+    # Se utiliza el modelo gemini-3.6-flash requerido por tu cuenta
     response = client.models.generate_content(
-        model='gemini-2.5-flash',
+        model='gemini-3.6-flash',
         contents=prompt,
         config=types.GenerateContentConfig(
             tools=[{"google_search": {}}],  # Búsqueda web en vivo
