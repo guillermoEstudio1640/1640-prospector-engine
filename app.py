@@ -52,11 +52,12 @@ def prospectar_leads(key, proj_name, country_val, ind_val):
     ]
     """
     
+    # Se utiliza el modelo gemini-2.5-flash requerido por tu cuenta
     response = client.models.generate_content(
         model='gemini-2.5-flash',
         contents=prompt,
         config=types.GenerateContentConfig(
-            tools=[{"google_search": {}}],  # Búsqueda en vivo
+            tools=[{"google_search": {}}],  # Búsqueda web en vivo
             temperature=0.2
         )
     )
@@ -92,7 +93,7 @@ if btn_ejecutar:
                     st.success(f"¡Prospección finalizada! Se encontraron {len(df)} prospectos validados con email.")
                     st.dataframe(df, use_container_width=True)
                     
-                    # Botón de descarga de CSV listo para Brevo o Google Sheets
+                    # Botón de descarga de CSV listo para Brevo / Google Sheets
                     csv_data = df.to_csv(index=False, encoding='utf-8-sig')
                     st.download_button(
                         label="📥 Descargar CSV para Brevo / Google Sheets",
