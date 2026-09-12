@@ -27,7 +27,7 @@ def prospectar_fase1_busqueda(client, country_val, ind_val):
     prompt_search = f"Busca empresas reales en {country_val} del rubro/ICP: {ind_val}. Lista de 10 a 15 empresas con sus sitios web oficiales y ubicaciones."
     
     response = client.models.generate_content(
-        model='gemini-2.5-flash',
+        model='gemini-3.6-flash',
         contents=prompt_search,
         config=types.GenerateContentConfig(
             tools=[{"google_search": {}}],
@@ -62,7 +62,7 @@ def prospectar_fase2_extraccion(client, raw_search_results, country_val, ind_val
     """
     
     response = client.models.generate_content(
-        model='gemini-2.5-flash',
+        model='gemini-3.6-flash',
         contents=prompt_json,
         config=types.GenerateContentConfig(
             temperature=0.1
